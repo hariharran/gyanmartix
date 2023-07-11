@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link
+    href="https://unpkg.com/css.gg@2.0.0/icons/css/search.css"
+    rel="stylesheet" />
+  <link
+    href="https://unpkg.com/css.gg@2.0.0/icons/css/close.css"
+    rel="stylesheet" />
+  <link
+    href="https://unpkg.com/css.gg@2.0.0/icons/css/mail.css"
+    rel="stylesheet" />
+  <link
+    href="https://unpkg.com/css.gg@2.0.0/icons/css/pin.css"
+    rel="stylesheet" />     
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>profile  </title>
+    <link rel="stylesheet" href="profilePage.css">
+</head>
+<body>
+    <div class="navigation">
+        <a href="dashbordpage.html">
+         <img
+           src="./assets/trackerlogo.png"
+           alt=""
+           style="width: 60px; padding-left: 130px; padding-top: 10px" /></a>
+         <h1>TRACKER</h1>
+       </div>
+       <div class="wrap">
+       <input id="search" type="text" placeholder="      Search by name" />
+       <div class="iconx">
+         <i class="gg-close"></i>
+       </div>
+       <div class="icons">
+         <i class="gg-search"></i>
+       </div>
+       </div>
+        <div class="boxs">
+          <div id="profile">
+        <img src="" alt="" style="border-radius: 26.9332px;"><br><br>
+        <h2></h2>
+        <i class="gg-mail"></i>
+        <h3></h3>
+      <i class="gg-pin"></i>
+      <h4></h4>
+      <label id="rupee">₹</label>
+      <h5>10000</h5>
+     </div>
+    </div>
+     <div class="coverall">
+        <div class="flex-container">
+          <div><input type="text" id="in" placeholder="Expense"/></div>
+          <div><input type="text" id="amt" placeholder="Amount"/> </div>
+          <div><input type="button" id="btn" value="ADD" /></div>
+          </div>
+      <div class="grid-container">
+        <div class="grid-item">TotalSalary</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item"><input type="text" class="valuetext" value="₹10000" style="color:#6496eb"></div>  
+        <div class="grid-item">Rent </div>
+        <div class="grid-item">:</div>
+        <div class="grid-item"><input type="text" class="valuetext" value="₹1000" /></div>  
+        <div class="grid-item">Petrol</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item"><input type="text" class="valuetext" value="₹2000" /></div> 
+        <div class="grid-item">Remainning Amount</div>
+        <div class="grid-item">:</div>
+        <div class="grid-item"><input type="text"class="valuetext"value="₹7000"style="color: #6496eb" /></div>  
+      </div>
+    </div>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = JSON.parse(urlParams.get('data'));
+
+    //console.log(myParam)
+    ( () => {
+        const profileImage = document.querySelector("#profile img");
+        profileImage.src = myParam.picture.large;
+
+        const profileName = document.querySelector("#profile h2")
+        profileName.textContent = `${myParam.name.first}${myParam.name.last}`;
+
+        const email = document.querySelector("#profile h3");
+        email.textContent = myParam.email;
+
+        const location = document.querySelector("#profile h4");
+        location.textContent = myParam.location.country.replace(/\s/g,'');
+
+        const remainingAmount = document.querySelector("#profile h5");
+        remainingAmount.placeholder = "₹ 7000";
+    } )();
+    
+</script>
+<footer>
+    <h2 style="font-family: 'DM Sans'; font-style: normal">Tracker</h2>
+    <br />
+    <hr />
+    <br />
+    <div class="foot">
+      <ul style="font-family: 'DM Sans'; font-style: normal; font-weight: 400">
+        <li><a class="active" href="#Home">Home</a></li>
+        <li><a href="#news">AboutUs</a></li>
+        <li><a href="#contact">ContactUs</a></li>
+        <li style="float: right">
+          <a href="">© 2023 Tracker.All rights reserved.</a>
+        </li>
+      </ul>
+      <br/>
+  </footer>
+        </body>
+        </html>

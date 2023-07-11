@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <link
+      href="https://unpkg.com/css.gg@2.0.0/icons/css/search.css"
+      rel="stylesheet" />
+    <link
+      href="https://unpkg.com/css.gg@2.0.0/icons/css/close.css"
+      rel="stylesheet" />
+
+    <link rel="stylesheet" href="dashbordpage.css" />
+    <title>dasbord</title>
+  </head>
+  <body>
+    <div class="navigation">
+      <img
+        src="./assets/trackerlogo.png"
+        alt=""
+        style="width: 60px; padding-left: 130px; padding-top: 10px" />
+      <h1>TRACKER</h1>
+    </div>
+    <div class="wrap">
+    <input id="search" type="text" placeholder="      Search by name" />
+    <div class="iconx">
+      <i class="gg-close"></i>
+    </div>
+    <div class="icons">
+      <i class="gg-search"></i>
+    </div>
+    </div>
+    <pic id="card"></pic>
+    <!-- <a href="/" style="text-decoration: none; color: black;"> -->
+        <script>
+          fetch('https://randomuser.me/api/?results=10')
+              .then(response => response.json())
+              .then(data => {
+                  const center = document.getElementById('card');
+  
+                  data.results.forEach((profile, index) => {
+                      const chip = document.createElement('div');
+                      chip.className = 'chip';
+                      const img = document.createElement('img');
+                      img.src = profile.picture.large;
+                      img.alt = 'Person';
+                      img.width = '96';
+                      img.height = '96';
+  
+                      const list = document.createElement('div');
+                      list.id = 'list';
+                      const h4 = document.createElement('h4');
+                      h4.style.color = 'black';
+                      h4.textContent = profile.name.first + ' ' + profile.name.last;
+                      const p1 = document.createElement('p');
+                      p1.textContent = profile.email;
+                      const p2 = document.createElement('p');
+                      p2.textContent = profile.location.country;
+                      const p3 = document.createElement('p');
+                      p3.textContent = '₹10000';
+  
+                      list.appendChild(h4);
+                      list.appendChild(p1);
+                      list.appendChild(p2);
+                      list.appendChild(p3);
+  
+                      chip.appendChild(img);
+                      chip.appendChild(list);
+  
+                      chip.addEventListener('click', () => {
+                          localStorage.setItem('selectedProfileIndex', index);
+                          window.location.href = 'profilePage.html?data='+ encodeURIComponent(JSON.stringify(profile));
+                          console.log("item : ",profile)
+                      });
+  
+                      center.appendChild(chip);
+                  });
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+              });
+      </script>
+  </body>
+  <footer>
+    <h2 style="font-family: 'DM Sans'; font-style: normal">Tracker</h2>
+    <br />
+    <hr />
+    <br />
+    <div class="foot">
+      <ul style="font-family: 'DM Sans'; font-style: normal; font-weight: 400">
+        <li><a class="active" href="#Home">Home</a></li>
+        <li><a href="#news">AboutUs</a></li>
+        <li><a href="#contact">ContactUs</a></li>
+        <li style="float: right">
+          <a href="">© 2023 Tracker.All rights reserved.</a>
+        </li>
+      </ul>
+      <br />
+    </div>
+  </footer>
+</html>
