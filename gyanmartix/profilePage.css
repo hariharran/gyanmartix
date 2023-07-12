@@ -265,29 +265,33 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
-
-
 @media only screen and (max-width: 1000px) {
-#search{
-  width: 800px;
-  margin-left: 5%;
-} 
-
-.search-btn{
-  left: 800px;
-}
-#search-this img{
-  padding: 0%;
-  margin: 0%;
-  top: 10px;
-}
-body{
-  width: 1000px;
-}
-
-.hole{
- margin-bottom: 222px;
-}
-
+  
+  .navigation{
+    width: 1270px;
+   }
+   #search{
+    left: 150px;
+    width: 1000px;
+   }
+  .icons{
+    display: 60%;
+      left: 1100px;
+   }
+   .iconsx{
+    display: none;
+   }
+   .boxs{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    top:6cm;
+    left: 3.5cm;
+   }
+   .coverall{
+    top: 700px;
+   }
+   footer{
+    display: none;
+   }
 }
