@@ -1,25 +1,26 @@
-const form = document.querySelector('#form')
+const form = document.querySelector('#form');
 
-form.addEventListener("submit",(e)=>{
-    
-    if(!checks()){
+form.addEventListener("submit", (e) => {
+    if (!checks()) {
         e.preventDefault();
     }
-    
-})
+});
 
-function checks(){
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var error = document.getElementById("default1");
-    if(email == "hariharran17@gmail.com" && password == "hari@7936"){
-        window.location.assign("dashbordpage.html");
-        error.textContent="";
+function checks() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("default1");
+
+    if (isValidCredentials(email, password)) {
+        window.location.assign("dashboardpage.html");
+        error.textContent = "";
+        return false;
+    } else {
+        error.textContent = "Invalid credentials";
         return false;
     }
-    else{
-        error.textContent="Invalid crendiential";
-        return false;
-    }
+}
 
+function isValidCredentials(email, password) {
+    return email === "hariharran17@gmail.com" && password === "hari@7936";
 }
